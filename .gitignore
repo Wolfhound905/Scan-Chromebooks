@@ -1,0 +1,10 @@
+# Ignore credentials
+.env
+# Ignore any files with data
+*.csv
+
+
+
+
+# VScode things
+.vscode/

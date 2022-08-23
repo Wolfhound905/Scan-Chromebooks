@@ -99,7 +99,7 @@ def upload_go_guardian(headers, data):
 
 
 try:
-    while len(students_rows) > 1:
+    while len(students_rows) > 0:
         student_email_header_index = students_header.index("Google Account")
         student_first_name_header_index = students_header.index("First Name")
         student_last_name_header_index = students_header.index("Last Name")
@@ -141,6 +141,8 @@ try:
 
                     entry_email = student_entry[student_email_header_index]
                     entry_name = f"{student_entry[student_first_name_header_index]} {student_entry[student_last_name_header_index]}"
+                    other_student_entries = [f"{students_header[student_entry.index(extra)]}: {extra}" for extra in student_entry if student_entry.index(extra) not in [student_email_header_index, student_first_name_header_index, student_last_name_header_index]]
+                    other_datas = " | (" + ", ".join(other_student_entries) + ")" if other_student_entries else ""
                 if entry_email == "done":
                     break
                 data.append(
@@ -156,7 +158,7 @@ try:
                 )
                 scanned_in_session.append([asset_id, entry_email])
                 print(
-                    f"{entry_name} ({entry_email}) has been assigned to Chromebook: {asset_id}"
+                    f"{entry_name} ({entry_email}) has been assigned to Chromebook: {asset_id}" + other_datas if other_datas else ""
                 )
         else:
             print("\nThat id is not in the inventory.")

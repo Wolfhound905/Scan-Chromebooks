@@ -3,8 +3,7 @@
 # Ignore any files with data
 *.csv
 
-
-
+venv
 
 # VScode things
 .vscode/

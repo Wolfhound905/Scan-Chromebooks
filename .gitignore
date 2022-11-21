@@ -1,8 +1,9 @@
 # Ignore credentials
 .env
+
 # Ignore any files with data
 *.csv
-
+unassign.txt
 venv
 
 # VScode things
